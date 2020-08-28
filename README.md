@@ -1,6 +1,6 @@
-# pokemon
+# POKEMON EXAMPLE APPS
 
-A new Flutter project.
+This is only for testing application about pokemon generated data from pokeapi.co about pokemon list, detail pokemon with 2 layout List and Grid
 
 ## Getting Started
 
