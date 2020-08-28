@@ -3,14 +3,13 @@
 This is only for testing application about pokemon generated data from pokeapi.co about pokemon list, detail pokemon with 2 layout List and Grid
 
 ## Getting Started
+<img src="/assets/screenshot/Screenshot_1598641221.png" width="200">  <img src="/assets/screenshot/Screenshot_1598641229.png" width="200">
 
-This project is a starting point for a Flutter application.
+And able change layout from list to grid
 
-A few resources to get you started if this is your first Flutter project:
+<img src="/assets/screenshot/Screenshot_1598641229.png" width="200">  <img src="/assets/screenshot/Screenshot_1598641234.png" width="200">
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+For detail information I getting from pokemon-species and pokemon/{id} from https://pokeapi.co/
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="/assets/screenshot/Screenshot_1598641241.png" width="200">  <img src="/assets/screenshot/Screenshot_1598641251.png" width="200">
+
