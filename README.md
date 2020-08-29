@@ -11,5 +11,5 @@ And able change layout from list to grid
 
 For detail information I getting from pokemon-species and pokemon/{id} from https://pokeapi.co/
 
-<img src="/assets/screenshot/Screenshot_1598641241.png" width="200">  <img src="/assets/screenshot/Screenshot_1598641251.png" width="200">
+<img src="/assets/screenshot/Screenshot_1598726369.png" width="200">  <img src="/assets/screenshot/Screenshot_1598726378.png" width="200">   <img src="/assets/screenshot/Screenshot_1598726374.png" width="200">
 
