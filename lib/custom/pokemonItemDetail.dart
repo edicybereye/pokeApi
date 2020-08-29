@@ -40,7 +40,7 @@ class PokemonItemDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 150,
+              height: 200,
               width: 150,
               child: Hero(
                 tag: "${a.name}",
@@ -57,7 +57,7 @@ class PokemonItemDetail extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                height: 180,
+                height: 200,
                 padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
@@ -435,7 +435,7 @@ class PokemonItemDetail extends StatelessWidget {
                                 width: 80,
                                 child: CachedNetworkImage(
                                   placeholder: (context, url) =>
-                                      PokemonShimmer(),
+                                      PokemonCircleShimmer(),
                                   imageUrl:
                                       "https://pokeres.bastionbot.org/images/pokemon/${pokemonEvolutions.chain.speciesNew.url.toString().substring(42).replaceAll('/', '')}.png",
                                   errorWidget: (context, url, error) =>
@@ -463,7 +463,7 @@ class PokemonItemDetail extends StatelessWidget {
                                       width: 80,
                                       child: CachedNetworkImage(
                                         placeholder: (context, url) =>
-                                            PokemonShimmer(),
+                                            PokemonCircleShimmer(),
                                         imageUrl:
                                             "https://pokeres.bastionbot.org/images/pokemon/${pokemonEvolutions.chain.evolvesTo[0]['species']['url'].toString().substring(42).replaceAll('/', '')}.png",
                                         errorWidget: (context, url, error) =>
@@ -481,36 +481,39 @@ class PokemonItemDetail extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                        pokemonEvolutions
-                                    .chain.evolvesTo[0]['evolves_to'].length ==
-                                0
+                        pokemonEvolutions.chain.evolvesTo.length == 0
                             ? SizedBox()
-                            : Expanded(
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      height: 80,
-                                      width: 80,
-                                      child: CachedNetworkImage(
-                                        placeholder: (context, url) =>
-                                            PokemonShimmer(),
-                                        imageUrl:
-                                            "https://pokeres.bastionbot.org/images/pokemon/${pokemonEvolutions.chain.evolvesTo[0]['evolves_to'][0]['species']['url'].toString().substring(42).replaceAll('/', '')}.png",
-                                        errorWidget: (context, url, error) =>
-                                            new Icon(Icons.error),
-                                      ),
+                            : pokemonEvolutions.chain.evolvesTo[0]['evolves_to']
+                                        .length ==
+                                    0
+                                ? SizedBox()
+                                : Expanded(
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 80,
+                                          width: 80,
+                                          child: CachedNetworkImage(
+                                            placeholder: (context, url) =>
+                                                PokemonCircleShimmer(),
+                                            imageUrl:
+                                                "https://pokeres.bastionbot.org/images/pokemon/${pokemonEvolutions.chain.evolvesTo[0]['evolves_to'][0]['species']['url'].toString().substring(42).replaceAll('/', '')}.png",
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    new Icon(Icons.error),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text(
+                                          "${pokemonEvolutions.chain.evolvesTo[0]['evolves_to'][0]['species']['name']}"
+                                              .toUpperCase(),
+                                          style: TextStyle(color: Colors.white),
+                                        )
+                                      ],
                                     ),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    Text(
-                                      "${pokemonEvolutions.chain.evolvesTo[0]['evolves_to'][0]['species']['name']}"
-                                          .toUpperCase(),
-                                      style: TextStyle(color: Colors.white),
-                                    )
-                                  ],
-                                ),
-                              ),
+                                  ),
                       ],
                     ),
                   ],
