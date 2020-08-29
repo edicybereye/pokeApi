@@ -18,6 +18,9 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
   int _selectPokeBall = 0;
   PokemonDetail pokemonDetail;
   PokemonSpecies pokemonSpecies;
+  PokemonEvolutions pokemonEvolutions;
+  var pokemonIDEvo;
+  var indexEvo;
   var loading = false;
   getPokemonDetail() {
     setState(() {
@@ -37,7 +40,22 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
             } else {
               setState(() {
                 pokemonSpecies = val;
-                loading = false;
+              });
+              ServicesPokemon.getPokemonEvolus(
+                      pokemonSpecies.evolutionChain.url)
+                  .then((e) {
+                if (e == null) {
+                } else {
+                  setState(() {
+                    pokemonEvolutions = e;
+                    loading = false;
+                    indexEvo = "https://pokeapi.co/api/v2/pokemon-species/";
+                    pokemonIDEvo = pokemonEvolutions.chain.speciesNew.url
+                        .substring(indexEvo.length)
+                        .replaceAll("/", "");
+                    print("NEW ID $pokemonIDEvo");
+                  });
+                }
               });
             }
           });
@@ -49,6 +67,7 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
   @override
   void initState() {
     getPokemonDetail();
+
     var startIndex = "https://pokeapi.co/api/v2/pokemon/";
     pokemonID =
         widget.model.url.substring(startIndex.length).replaceAll("/", "");
@@ -71,6 +90,7 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
             loading: loading,
             pokemonDetail: pokemonDetail,
             pokemonSpecies: pokemonSpecies,
+            pokemonEvolutions: pokemonEvolutions,
             selectPokeBlue: () {
               setState(() {
                 _selectPokeBall = 1;
@@ -81,7 +101,7 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
                 _selectPokeBall = 0;
               });
             },
-          )
+          ),
         ],
       ),
     );

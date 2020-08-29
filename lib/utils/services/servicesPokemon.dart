@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:pokemon/models/index.dart';
 
@@ -60,6 +59,26 @@ class ServicesPokemon {
       }
     } catch (e) {
       PokemonSpecies categories = new PokemonSpecies();
+      return categories;
+    }
+  }
+
+  static Future<PokemonEvolutions> getPokemonEvolus(String url) async {
+    Dio dio = Dio();
+    try {
+      final response = await dio.get("$url");
+      print("POKEMON EVO ENDPOINT ${response.statusCode}");
+      if (200 == response.statusCode) {
+        print("POKEMON EVO RESULT ${response.data}");
+        PokemonEvolutions categories =
+            PokemonEvolutions.fromJson(response.data);
+        return categories;
+      } else {
+        PokemonEvolutions categories = new PokemonEvolutions();
+        return categories;
+      }
+    } catch (e) {
+      PokemonEvolutions categories = new PokemonEvolutions();
       return categories;
     }
   }
